@@ -10,6 +10,7 @@ import type {CellChangeParams, ColumnItem, TableConfig} from "@/types/form"
 import {isFunction, isString, isUndefined, omit} from "lodash";
 import {reactive, ref} from "vue";
 import type {ValidateFieldsError} from "async-validator";
+import SchemaFormMap from "@/components/base";
 
 defineOptions({name: 'SchemaTable'})
 
@@ -49,6 +50,13 @@ const getInstanceByField = (data: { targetField: string, index: number }): any =
     }
   }
   return null
+}
+
+/**
+ * 当前渲染组件类型
+ */
+const getComponent = (component: string) => {
+  return SchemaFormMap[component] || component
 }
 
 /**
@@ -275,7 +283,7 @@ defineExpose({
               <component
                   v-else
                   ref="formItemListRef"
-                  :is="scope.row[`${TABLE_CELL_COMPONENT}${item.name}`]"
+                  :is="getComponent(scope.row[`${TABLE_CELL_COMPONENT}${item.name}`])"
                   v-model="scope.row[item.name]"
                   @change="(event: Record<string, any>) => handleChange({value: scope.row[item.name], scope, item, event})"
                   :formData="scope.row"

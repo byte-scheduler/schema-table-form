@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     dts({
       include: ['src/**/*'],
-      outDir: 'dist/types',
+      outDir: 'dist',
       staticImport: true,
       insertTypesEntry: true,
     })

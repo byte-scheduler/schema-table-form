@@ -6,6 +6,7 @@ import type {FormInstance} from "element-plus";
 import type {ValidateFieldsError} from "async-validator";
 import {FORM_EMIT_NAME} from "@/constants";
 import {DisplayMode} from "@/enums";
+import SchemaFormMap from "@/components/base";
 
 defineOptions({name: 'SchemaForm'})
 
@@ -61,10 +62,13 @@ const getComponentProps = (item: FormItemConfig) => {
  */
 const getComponent = (params: { index: number; item: FormItemConfig, value: any }) => {
   const {item} = params;
+  let component
   if (isFunction(item.component)) {
-    return item.component({...params, formData: formData});
+    component = item.component({...params, formData: formData});
+  } else {
+    component = item.component
   }
-  return item.component
+  return SchemaFormMap[component] || component
 }
 
 /**

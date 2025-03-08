@@ -1,10 +1,12 @@
-import {App} from 'vue';
+import {App} from 'vue'
 
-import SchemaForm from "@/components/form/schema-form.vue";
-import SchemaTable from "@/components/table/schema-table.vue";
+import SchemaForm from "@/components/form/schema-form.vue"
+import SchemaTable from "@/components/table/schema-table.vue"
 
 export * from '@/types/form'
 export * from '@/enums'
+
+export {SchemaForm, SchemaTable}
 
 export default {
     install(app: App) {

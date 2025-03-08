@@ -1,3 +1,3 @@
 <template>
-  你好
+  你好，Schema Table Form
 </template>
