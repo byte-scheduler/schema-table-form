@@ -170,7 +170,7 @@ const restForm = () => {
       @change="change"
   >
     <template #StudentInput="{scope}">
-      <StudentInput v-bind="scope" :formData="scope.formData" v-model="formState.studentInfo"/>
+      <StudentInput v-bind="scope" :name="scope.name" v-model="formState.studentInfo"/>
     </template>
     <div class="action">
       <el-button type="primary" @click="restForm">重 置</el-button>
@@ -178,11 +178,3 @@ const restForm = () => {
     </div>
   </SchemaForm>
 </template>
-
-<style scoped>
-.examples-container {
-  width: 50%;
-  padding: 20px;
-  text-align: center;
-}
-</style>

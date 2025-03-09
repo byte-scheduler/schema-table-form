@@ -8,7 +8,7 @@ const FORM_ITEM_EMIT_NAME = 'change:update'
 
 defineOptions({name: 'SchemaInput'})
 
-interface Props extends Omit<FormItemProps, 'name'> {
+interface Props extends FormItemProps {
   value?: string
 }
 
