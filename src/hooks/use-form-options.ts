@@ -1,6 +1,6 @@
 import {computed, ref} from "vue"
 
-import {isEqual, isFunction, isNull, isUndefined} from "lodash"
+import {isArray, isEqual, isFunction, isNull, isUndefined} from "lodash"
 import type {FormItemProps} from "@/types/schema"
 import {DisplayMode} from "@/enums"
 
@@ -21,6 +21,9 @@ function useFormOptions(props: FormItemProps, formItemValue: any) {
         }
         let viewVal = formItemValue.value
         if (options.value.length && valueKey && labelKey) {
+            if (isArray(viewVal)) {
+                return options.value.filter(n => viewVal.includes(n[valueKey])).map(n => n[labelKey]).join("、")
+            }
             const findValue = options.value.find(((item: Record<string, any>) => isEqual(item[valueKey], formItemValue.value)))
             const val = findValue?.[labelKey]
             if (!(isNull(val) || isUndefined(val))) {

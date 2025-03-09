@@ -9,6 +9,7 @@ import {
 import type {CellChangeParams, ColumnItem, TableConfig} from "@/types/schema"
 import {isFunction, isString, isUndefined, omit} from "lodash"
 import {reactive, ref} from "vue"
+import "@/style/base.css"
 import type {ValidateFieldsError} from "async-validator"
 import SchemaFormMap from "@/components/base"
 
@@ -238,7 +239,7 @@ const getFormData = () => {
  */
 const labelClassName = (item: ColumnItem) => {
   if (columnStore[item.name]) {
-    return 'schema-table-column-required'
+    return 'schema-column-required'
   }
 }
 

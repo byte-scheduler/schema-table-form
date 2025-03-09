@@ -1,8 +1,8 @@
-.schema-table-column-required {
+.schema-column-required {
     position: relative;
 }
 
-.schema-table-column-required .cell:before {
+.schema-column-required .cell:before {
     position: absolute;
     left: 2px;
     display: block;

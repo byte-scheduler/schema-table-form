@@ -12,7 +12,7 @@ interface Props extends FormItemProps {
 }
 
 const props = withDefaults(defineProps<Props>(), {})
-const internalModel = ref(props.value);
+const internalModel = ref(props.formData[props.name]);
 
 const {
   isView,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {ref} from "vue"
+import {onMounted, ref} from "vue"
 import {useFormOptions} from "@/hooks/use-form-options"
 import type {FormItemProps} from "@/types/schema"
 import {FORM_ITEM_EMIT_NAME} from "@/constants"
@@ -12,7 +12,7 @@ interface Props extends FormItemProps {
 }
 
 const props = withDefaults(defineProps<Props>(), {})
-const internalModel = ref(props.value);
+const internalModel = ref(props.formData[props.name]);
 
 const {
   isView,
@@ -24,6 +24,10 @@ const emit = defineEmits([FORM_ITEM_EMIT_NAME]);
 const handleChange = () => {
   emit(FORM_ITEM_EMIT_NAME, {...props, internalModel})
 }
+
+onMounted(() => {
+  console.log(props, 'props')
+})
 
 defineExpose({
   bindFieldName: props.name,
