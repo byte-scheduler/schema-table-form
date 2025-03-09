@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue"
 
-import {useForm} from "@/hooks/use-form"
-import type {FormItemProps} from "@/types/form"
-import {FORM_ITEM_EMIT_NAME, OPTION_LABEL_KEY, OPTION_VALUE_KEY} from "@/constants";
+import {useFormOptions} from "@/hooks/use-form-options"
+import type {FormItemProps} from "@/types/schema"
+import {FORM_ITEM_EMIT_NAME, OPTION_LABEL_KEY, OPTION_VALUE_KEY} from "@/constants"
 
 defineOptions({name: 'SchemaSelect'})
 
@@ -25,7 +25,7 @@ const {
   options,
   isLoading,
   loadOptions
-} = useForm(props, internalModel)
+} = useFormOptions(props, internalModel)
 
 const emit = defineEmits([FORM_ITEM_EMIT_NAME]);
 const handleChange = () => {

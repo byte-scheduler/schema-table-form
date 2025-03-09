@@ -1,6 +1,5 @@
-import type {FormRules} from 'element-plus'
-
-import {DisplayMode, FormElemType} from "@/enums"
+import type {FormRules} from "element-plus"
+import type {FormElemType} from "@/enums"
 
 export type PropFunction<T> = T | ((params?: Record<string, any>) => T | any)
 
@@ -36,7 +35,7 @@ export interface FormItemConfig {
     name: string // 字段名
     label?: string // 字段描述
     component?: PropFunction<FormElemType | string> // 字段组件
-    mode?: PropFunction<DisplayMode> // 组件展示模式
+    mode?: PropFunction<string> // 组件展示模式
     visible?: PropFunction<boolean> // 组件隐藏
     rules?: PropFunction<FormRules> // 字段校验（优先级最高）
     required?: PropFunction<boolean> // 字段必填（简要必填配置方式）

@@ -6,11 +6,11 @@ import {
   TABLE_CELL_SLOT,
   TABLE_ROW_VALUE_KEY
 } from "@/constants"
-import type {CellChangeParams, ColumnItem, TableConfig} from "@/types/form"
-import {isFunction, isString, isUndefined, omit} from "lodash";
-import {reactive, ref} from "vue";
-import type {ValidateFieldsError} from "async-validator";
-import SchemaFormMap from "@/components/base";
+import type {CellChangeParams, ColumnItem, TableConfig} from "@/types/schema"
+import {isFunction, isString, isUndefined, omit} from "lodash"
+import {reactive, ref} from "vue"
+import type {ValidateFieldsError} from "async-validator"
+import SchemaFormMap from "@/components/base"
 
 defineOptions({name: 'SchemaTable'})
 
@@ -171,12 +171,14 @@ const chkAndSetCellCustomSlot = (params: { value: any, scope: any, item: ColumnI
 /**
  * 表单组件属性
  */
-const getComponentProps = (item: ColumnItem) => {
+const getComponentProps = (item: ColumnItem, scope: any) => {
   return {
-    // 忽略 disabled、readonly 属性，避免冲突
+    // 忽略 disabled、readonly
     ...omit(item, 'disabled', 'readonly',),
     // 字段组件配置
     ...item.props,
+    scope,
+    formData: scope.row,
   };
 }
 const columnStore = reactive<Record<string, any>>({})
@@ -269,8 +271,9 @@ defineExpose({
           <template #default="scope">
             <slot
                 v-if="chkAndSetCellCustomSlot({value: scope.row[item.name], scope, item})"
-                :name="scope.row[TABLE_CELL_CUSTOM_SLOT]">
-            </slot>
+                :name="scope.row[TABLE_CELL_CUSTOM_SLOT]"
+                v-bind="getComponentProps(item, scope)"
+            />
             <el-form-item
                 v-else-if="chkAndSetCellComponent({value: scope.row[item.name], scope, item})"
                 :prop="`data.${scope.$index}.${item.name}`"
@@ -279,16 +282,16 @@ defineExpose({
             >
               <slot
                   v-if="chkAndSetCellSlot({value: scope.row[item.name], scope, item})"
-                  :name="scope.row[TABLE_CELL_SLOT]"></slot>
+                  :name="scope.row[TABLE_CELL_SLOT]"
+                  v-bind="getComponentProps(item, scope)"
+              />
               <component
                   v-else
                   ref="formItemListRef"
                   :is="getComponent(scope.row[`${TABLE_CELL_COMPONENT}${item.name}`])"
                   v-model="scope.row[item.name]"
                   @change="(event: Record<string, any>) => handleChange({value: scope.row[item.name], scope, item, event})"
-                  :formData="scope.row"
-                  :scope="scope"
-                  v-bind="getComponentProps(item)"
+                  v-bind="getComponentProps(item, scope)"
               />
             </el-form-item>
             <template v-else>

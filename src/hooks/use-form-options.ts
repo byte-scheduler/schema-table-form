@@ -1,10 +1,10 @@
-import {computed, ref} from "vue";
+import {computed, ref} from "vue"
 
-import {isEqual, isFunction, isNull, isUndefined} from "lodash";
-import type {FormItemProps} from "@/types/form";
-import {DisplayMode} from "@/enums";
+import {isEqual, isFunction, isNull, isUndefined} from "lodash"
+import type {FormItemProps} from "@/types/schema"
+import {DisplayMode} from "@/enums"
 
-function useForm(props: FormItemProps, formItemValue: any) {
+function useFormOptions(props: FormItemProps, formItemValue: any) {
     const {valueKey, labelKey} = props
     const options = ref([])
 
@@ -64,4 +64,4 @@ function useForm(props: FormItemProps, formItemValue: any) {
     }
 }
 
-export {useForm}
+export {useFormOptions}

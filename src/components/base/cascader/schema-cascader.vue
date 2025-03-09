@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type {FormItemProps} from "@/types/form";
-import {onMounted, ref} from "vue";
-import {useForm} from "@/hooks/use-form";
-import {FORM_ITEM_EMIT_NAME} from "@/constants";
+import type {FormItemProps} from "@/types/schema"
+import {onMounted, ref} from "vue"
+import {useFormOptions} from "@/hooks/use-form-options"
+import {FORM_ITEM_EMIT_NAME} from "@/constants"
 
 defineOptions({name: 'SchemaCascader'})
 
@@ -24,7 +24,7 @@ const {
   viewValue,
   options,
   loadOptions
-} = useForm(props, internalModel)
+} = useFormOptions(props, internalModel)
 
 const emit = defineEmits([FORM_ITEM_EMIT_NAME]);
 const handleChange = () => {

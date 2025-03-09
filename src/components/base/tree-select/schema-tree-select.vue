@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
-import {onMounted, ref} from "vue";
-import {useForm} from "@/hooks/use-form";
-import type {FormItemProps} from "@/types/form"
-import {FORM_ITEM_EMIT_NAME} from "@/constants";
+import {onMounted, ref} from "vue"
+import {useFormOptions} from "@/hooks/use-form-options"
+import type {FormItemProps} from "@/types/schema"
+import {FORM_ITEM_EMIT_NAME} from "@/constants"
 
 defineOptions({name: 'SchemaTreeSelect'})
 
@@ -20,7 +20,7 @@ const {
   viewValue,
   options,
   loadOptions
-} = useForm(props, internalModel)
+} = useFormOptions(props, internalModel)
 
 const emit = defineEmits([FORM_ITEM_EMIT_NAME]);
 const handleChange = () => {

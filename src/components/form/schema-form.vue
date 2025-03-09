@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {reactive, ref} from 'vue';
-import {isFunction, isUndefined, omit} from "lodash";
-import type {FormConfig, FormItemConfig, FormItemChangeParams} from "@/types/form";
-import type {FormInstance} from "element-plus";
-import type {ValidateFieldsError} from "async-validator";
-import {FORM_EMIT_NAME} from "@/constants";
-import {DisplayMode} from "@/enums";
-import SchemaFormMap from "@/components/base";
+import {isFunction, isUndefined, omit} from "lodash"
+import type {FormConfig, FormItemConfig, FormItemChangeParams} from "@/types/schema"
+import type {FormInstance} from "element-plus"
+import type {ValidateFieldsError} from "async-validator"
+import {FORM_EMIT_NAME} from "@/constants"
+import {DisplayMode} from "@/enums"
+import SchemaFormMap from "@/components/base"
 
 defineOptions({name: 'SchemaForm'})
 
@@ -48,12 +48,16 @@ const getRules = (item: FormItemConfig) => {
 /**
  * 表单组件属性
  */
-const getComponentProps = (item: FormItemConfig) => {
+const getComponentProps = (item: FormItemConfig, index: number) => {
   return {
-    // 忽略 disabled、readonly 属性，避免冲突
+    // 忽略 disabled、readonly
     ...omit(item, 'disabled', 'readonly'),
     // 字段组件配置
     ...item.props,
+    // 重写 disabled、readonly
+    disabled: isDisabled({index, item, value: formData[item.name]}),
+    readonly: isReadonly({index, item, value: formData[item.name]}),
+    formData
   };
 };
 
@@ -205,7 +209,7 @@ defineExpose({
     <el-row v-bind="config?.layout">
       <template v-for="(item, index) in formItems" :key="item.name">
         <template v-if="isVisible({index,item, value: formData[item.name]})">
-          <slot v-if="item?.customSlot" :name="item.customSlot"></slot>
+          <slot v-if="item?.customSlot" :name="item.customSlot" :scope="getComponentProps(item, index)"/>
           <el-col v-else v-bind="item?.column">
             <el-form-item
                 :label="item.label"
@@ -213,19 +217,16 @@ defineExpose({
                 :rules="getRules(item)"
                 v-bind="item?.formItemProps"
             >
-              <slot v-if="item.labelSlot" :name="item.labelSlot"/>
-              <slot v-if="item.errorSlot" :name="item.errorSlot"/>
-              <slot v-if="item.slot" :name="item.slot"/>
+              <slot v-if="item.labelSlot" :name="item.labelSlot" :scope="getComponentProps(item, index)"/>
+              <slot v-if="item.errorSlot" :name="item.errorSlot" :scope="getComponentProps(item, index)"/>
+              <slot v-if="item.slot" :name="item.slot" :scope="getComponentProps(item, index)"/>
               <component
                   v-else
                   ref="formItemListRef"
-                  :is="getComponent({index,item, value: formData[item.name]})"
+                  :is="getComponent({index, item, value: formData[item.name]})"
                   v-model="formData[item.name]"
                   @change="(event: Record<string, any>) => handleChange({index, item, event})"
-                  :formData="formData"
-                  :disabled="isDisabled({index, item, value: formData[item.name]})"
-                  :readonly="isReadonly({index,item, value: formData[item.name]})"
-                  v-bind="getComponentProps(item)"
+                  v-bind="getComponentProps(item, index)"
               />
             </el-form-item>
           </el-col>
