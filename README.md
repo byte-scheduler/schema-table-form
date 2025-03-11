@@ -43,9 +43,7 @@ app.mount('#app')
   import {SchemaForm, FormElemType} from 'schema-table-form'
   import type {FormItemConfig} from "schema-table-form"
 
-  const formState = reactive<Record<string, any
-  >>
-  ({
+  const formState = reactive<Record<string, any>>({
     name: '格子惊蛰版',
     gender: 1
   })

@@ -5,7 +5,7 @@
     "name": "Fangliang",
     "email": "fl9420@qq.com"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "license": "MIT",
   "description": "A form & table component based on Vue 3 and Element Plus.",
