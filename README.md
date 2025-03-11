@@ -1,13 +1,14 @@
-## 安装 SchemaFormTable
+# 安装 SchemaFormTable
 
 ```vue
 npm install schema-form-table
 ```
 
-## 使用 SchemaFormTable
+# 使用 SchemaFormTable
 
 *SchemaFormTable 分为全局引入和按需引入*
-### 全局引入
+
+## 全局引入
 
 在 main.ts 中写入一下代码，因为 SchemaFormTable 的组件是基于 [element-plus](https://element-plus.org/zh-CN/) 开发的，所以在引入之前
 element-plus 也必须引入。
@@ -32,9 +33,9 @@ app.mount('#app')
 
 ```
 
-### 按需引入
+## 按需引入（SchemaForm）
 
-在需要使用 SchemaFormTable 的组件中引入
+在需要使用 SchemaFormTable 的组件中引入 SchemaForm
 
 ```html
 <script setup lang="ts">
@@ -42,7 +43,9 @@ app.mount('#app')
   import {SchemaForm, FormElemType} from 'schema-table-form'
   import type {FormItemConfig} from "schema-table-form"
 
-  const formState = reactive<Record<string, any>>({
+  const formState = reactive<Record<string, any
+  >>
+  ({
     name: '格子惊蛰版',
     gender: 1
   })
@@ -66,6 +69,45 @@ app.mount('#app')
   <SchemaForm
       :form-items="formItems"
       v-model:model="formState"
+  />
+</template>
+```
+
+## 按需引入（SchemaTable）
+
+在需要使用 SchemaFormTable 的组件中引入 SchemaTable
+
+```html
+<script setup lang="ts">
+  import {reactive} from "vue";
+  import {ColumnItem} from "schema-table-form";
+  import {FormElemType, SchemaTable} from "schema-table-form";
+
+  const columns = reactive<ColumnItem[]>([
+    {
+      name: 'name',
+      label: '姓名',
+      component: FormElemType.INPUT
+    },
+    {
+      name: 'age',
+      label: '年龄',
+      component: FormElemType.INPUT_NUMBER
+    }
+  ])
+
+  const data = reactive([
+    {name: '格子', age: 18},
+    {name: '格子大暑版', age: 19},
+    {name: '格子惊蛰版', age: 20}
+  ])
+</script>
+
+<template>
+  <SchemaTable
+      ref="spriteTableRef"
+      :columns="columns"
+      :data="data"
   />
 </template>
 ```
