@@ -36,7 +36,7 @@ app.mount('#app')
 
 在需要使用 SchemaFormTable 的组件中引入
 
-```vue
+```javascript
 
 <script setup lang="ts">
   import {reactive, ref} from "vue"
