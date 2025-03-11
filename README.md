@@ -1,13 +1,13 @@
-### 安装 SchemaFormTable
+## 安装 SchemaFormTable
 
 ```vue
 npm install schema-form-table
 ```
 
-### 使用 SchemaFormTable
+## 使用 SchemaFormTable
 
 *SchemaFormTable 分为全局引入和按需引入*
-> 全局引入
+### 全局引入
 
 在 main.ts 中写入一下代码，因为 SchemaFormTable 的组件是基于 [element-plus](https://element-plus.org/zh-CN/) 开发的，所以在引入之前
 element-plus 也必须引入。
@@ -32,7 +32,7 @@ app.mount('#app')
 
 ```
 
-> 按需引入
+### 按需引入
 
 在需要使用 SchemaFormTable 的组件中引入
 
