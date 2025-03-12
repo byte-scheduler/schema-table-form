@@ -6,7 +6,7 @@ npm install schema-form-table
 
 # 使用 SchemaFormTable
 
-*SchemaFormTable 分为全局引入和按需引入*
+>介绍：SchemaFormTable 分为全局引入和按需引入，是一款基于 Vue3 与 TypeScript 的声明式动态表单、表格组件，通过简洁的 JavaScript 对象配置，快速实现复杂业务场景的表单字段联动（显隐、禁用、类型切换）与数据表格渲染。无缝集成 Element Plus 设计规范，支持插槽深度自定义，助力开发者告别重复代码。
 
 ## 全局引入
 
