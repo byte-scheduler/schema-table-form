@@ -1,14 +1,14 @@
-# 安装 SchemaFormTable
+# 安装 SchemaFormTable 🍀
 
 ```vue
-npm install schema-form-table
+npm install schema-form-table 
 ```
 
-# 使用 SchemaFormTable
+# 使用 SchemaFormTable 🍉
 
 >介绍：SchemaFormTable 分为全局引入和按需引入，是一款基于 Vue3 与 TypeScript 的声明式动态表单、表格组件，通过简洁的 JavaScript 对象配置，快速实现复杂业务场景的表单字段联动（显隐、禁用、类型切换）与数据表格渲染。无缝集成 Element Plus 设计规范，支持插槽深度自定义，助力开发者告别重复代码。
 
-## 全局引入
+## 全局引入 🍏
 
 在 main.ts 中写入一下代码，因为 SchemaFormTable 的组件是基于 [element-plus](https://element-plus.org/zh-CN/) 开发的，所以在引入之前
 element-plus 也必须引入。
@@ -33,7 +33,7 @@ app.mount('#app')
 
 ```
 
-## 按需引入（SchemaForm）
+## 按需引入（SchemaForm） 🍅
 
 在需要使用 SchemaFormTable 的组件中引入 SchemaForm
 
@@ -71,7 +71,7 @@ app.mount('#app')
 </template>
 ```
 
-## 按需引入（SchemaTable）
+## 按需引入（SchemaTable）🍔
 
 在需要使用 SchemaFormTable 的组件中引入 SchemaTable
 
@@ -110,8 +110,8 @@ app.mount('#app')
 </template>
 ```
 
-# 配置 SchemaForm
-## FormConfig
+# 配置 SchemaForm ⛄
+## FormConfig 🎋
 | 属性名 | 类型 | 说明 | 默认值 | 必填 
 | ---- | ---- |----|----|----|
 | trigger | string | 表单触发时机 | change | 否  |
@@ -119,7 +119,7 @@ app.mount('#app')
 | layout | Record<string, any> | 表单布局配置（基于 ElRow & ElCol 组件实现） | -  | 否  |
 | props | Record<string, any> | 表单属性用于 ElForm 组件 | - | 否 |
 | emptyText | string | VIEW 模式下空值展示的文本（优先级小于字段属性定义）|-|否|
-## FormItemConfig
+## FormItemConfig 🧸
 | 属性名 | 类型                                           | 说明 | 默认值 | 必填 
 | ---- |-------------|----|-----|----|
 | name | string                                       |字段名| -   | 是  |
@@ -145,8 +145,8 @@ app.mount('#app')
 | change | (data: FormItemChangeParams) => void         |字段值改变时触发|-|否|
 | format | (data: any) => any                           |仅在 VIEW 模式下格式化展示的文本|-|否|
 | emptyText | string                                       |VIEW 模式下为 undefined、null 时展示的默认文本|-|否|
-# 配置 SchemaTable
-## TableConfig
+# 配置 SchemaTable 🎉
+## TableConfig 🐦
 | 属性名 | 类型 | 说明 | 默认值 | 必填 
 | ---- | ---- |----|-|-|
 | emptyText |string|空值展示的文本（优先级小于列配置定义）|-|否|
@@ -156,7 +156,7 @@ app.mount('#app')
 | appendSlot |string||-|否|
 | emptySlot |string||-|否|
 
-## ColumnItem
+## ColumnItem 🐸
 | 属性名 | 类型           | 说明 | 默认值 | 必填   
 | ---- |--------|----|----|------|
 | name | string                                           |列字段名|-| 是    |
