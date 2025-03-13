@@ -146,7 +146,7 @@ app.mount('#app')
 | format | (data: any) => any                           |仅在 VIEW 模式下格式化展示的文本|-|否|
 | emptyText | string                                       |VIEW 模式下为 undefined、null 时展示的默认文本|-|否|
 # 配置 SchemaTable 🎉
-## TableConfig 🐦
+## TableConfig 🐠
 | 属性名 | 类型 | 说明 | 默认值 | 必填 
 | ---- | ---- |----|-|-|
 | emptyText |string|空值展示的文本（优先级小于列配置定义）|-|否|
