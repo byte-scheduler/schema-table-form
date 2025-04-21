@@ -6,6 +6,9 @@
       能根据字段填写的情况，动态的修改某个字段的类型、是否隐藏、是否禁用、是否只读。可以通<br/>
       过插槽自定义表单组件。</p>
     <img src="/vite.svg" class="vite" alt="Vite"/>
+    <div>
+      本地调试：<code>npm run dev:example</code>
+    </div>
     <p>
       <a href="https://gitee.com/byte-scheduler/schema-table-form" target="_blank">Git: schema-table-form</a>
     </p>
