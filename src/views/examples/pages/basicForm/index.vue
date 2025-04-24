@@ -216,7 +216,7 @@ const restForm = () => {
   </SchemaForm>
 </template>
 
-<style>
+<style scoped>
 .action {
   text-align: center;
 }
