@@ -1,10 +1,11 @@
 /**
  * 获取政治面貌列表
  */
-export const getPoliticalOutlooks = (params: any) => {
+export const getPoliticalOutlooks = () => {
     const list = [
-        {value: 1, name: `党员${params.label}`},
-        {value: 2, name: `团员${params.label}`}
+        {value: 0, name: '群众'},
+        {value: 1, name: '团员'},
+        {value: 2, name: '党员'}
     ]
     return new Promise(resolve => {
         setTimeout(() => {

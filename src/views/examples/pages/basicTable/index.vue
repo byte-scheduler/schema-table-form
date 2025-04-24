@@ -52,8 +52,8 @@ const columns = reactive<ColumnItem[]>([
     labelKey: 'name',
     valueKey: 'value',
     required: true,
-    remoteOptions: ({params}: any) => {
-      return getPoliticalOutlooks({label: params?.label || '#'})
+    remoteOptions: () => {
+      return getPoliticalOutlooks()
     }
   },
 ])

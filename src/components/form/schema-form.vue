@@ -7,6 +7,7 @@ import type {ValidateFieldsError} from "async-validator"
 import {FORM_EMIT_NAME} from "@/constants"
 import {DisplayMode} from "@/enums"
 import SchemaFormMap from "@/components/base"
+import {isTruthValue} from "@/utils";
 
 defineOptions({name: 'SchemaForm'})
 
@@ -81,10 +82,10 @@ const getComponent = (params: { index: number; item: FormItemConfig, value: any 
 const isVisible = (params: { index: number; item: FormItemConfig, value: any }) => {
   const {item} = params;
   if (isFunction(item.visible)) {
-    return item.visible({...params, formData: formData});
+    return isTruthValue(item.visible({...params, formData: formData}));
   }
   // 默认设置为 TRUE
-  return isUndefined(item.visible) ? true : item.visible;
+  return isUndefined(item.visible) ? true : isTruthValue(item.visible);
 }
 
 /**

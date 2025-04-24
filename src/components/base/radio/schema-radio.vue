@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {onMounted, ref} from "vue"
+import {onMounted, ref, useAttrs} from "vue"
 import {useFormOptions} from "@/hooks/use-form-options"
 import type {FormItemProps} from "@/types/schema"
 import {FORM_ITEM_EMIT_NAME} from "@/constants"
@@ -35,6 +35,8 @@ onMounted(() => {
   loadOptions()
 })
 
+const attrs = useAttrs()
+
 defineExpose({
   loadOptions,
   bindFieldName: props.name,
@@ -43,22 +45,25 @@ defineExpose({
 </script>
 
 <template>
-  <template v-if="isView">
-    <slot v-if="viewSlot" :name="viewSlot"></slot>
-    <template v-else>{{ viewValue }}</template>
-  </template>
-  <el-radio-group
-      v-else
-      @change="handleChange"
-      v-model="internalModel"
-  >
-    <el-radio
-        v-for="item in options"
-        :key="item[valueKey]"
-        :label="item[labelKey]"
-        :value="item[valueKey]"
-        v-bind="props?.itemProps?.optionProps"
+  <div>
+    <template v-if="isView">
+      <slot v-if="viewSlot" :name="viewSlot"></slot>
+      <template v-else>{{ viewValue }}</template>
+    </template>
+    <el-radio-group
+        v-bind="attrs"
+        v-else
+        @change="handleChange"
+        v-model="internalModel"
     >
-    </el-radio>
-  </el-radio-group>
+      <el-radio
+          v-for="item in options"
+          :key="item[valueKey]"
+          :label="item[labelKey]"
+          :value="item[valueKey]"
+          v-bind="props?.itemProps?.optionProps"
+      >
+      </el-radio>
+    </el-radio-group>
+  </div>
 </template>

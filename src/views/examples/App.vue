@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {shallowRef} from 'vue'
 import './style/base.css'
 import AsideMenu from './components/AsideMenu/index.vue'
 
-const component = ref(null)
+const component = shallowRef(null)
 const handleSelect = (data: Record<string, any>) => {
   component.value = data.component
 }

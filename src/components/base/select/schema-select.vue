@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue"
+import {onMounted, ref, useAttrs} from "vue"
 
 import {useFormOptions} from "@/hooks/use-form-options"
 import type {FormItemProps} from "@/types/schema"
@@ -35,7 +35,7 @@ const handleChange = () => {
 onMounted(() => {
   loadOptions()
 })
-
+const attrs = useAttrs()
 defineExpose({
   loadOptions,
   bindFieldName: props.name,
@@ -49,6 +49,7 @@ defineExpose({
     <template v-else>{{ viewValue }}</template>
   </template>
   <el-select
+      v-bind="attrs"
       v-else
       :loading="isLoading"
       @change="handleChange"
