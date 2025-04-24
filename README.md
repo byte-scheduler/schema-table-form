@@ -46,7 +46,6 @@ app.mount('#app')
     import type {FormConfig, FormItemConfig} from "@/types/schema.js";
 
     import {getAddressList, getPoliticalOutlooks} from "../../mock";
-    import StudentInput from "../../components/StudentInput.vue";
 
     const formConfig = reactive<FormConfig>({
         layout: {
@@ -246,9 +245,6 @@ app.mount('#app')
             v-model:model="formState"
             @change="onFormChange"
     >
-        <template #StudentInput="{scope}">
-            <StudentInput v-bind="scope" :name="scope.name" v-model="formState.studentInfo"/>
-        </template>
         <div class="action">
             <el-button @click="restForm">重 置</el-button>
             <el-button type="primary" @click="submitForm">提 交</el-button>
