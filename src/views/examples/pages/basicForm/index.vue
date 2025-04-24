@@ -177,7 +177,7 @@ const formItems = computed<FormItemConfig[]>(() => {
 
 const spriteFormsRef = ref()
 
-/**体检表单*/
+/**提交表单*/
 const submitForm = () => {
   spriteFormsRef.value.validate().then(() => {
     ElMessage.success('操作成功')
