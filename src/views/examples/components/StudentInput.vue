@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
-import {useFormOptions} from "@/hooks/use-form-options";
-import type {FormItemProps} from "@/types/schema";
+import {useFormOptions} from "@/hooks/use-form-options.js";
+import type {FormItemProps} from "@/types/schema.ts";
 
 const FORM_ITEM_EMIT_NAME = 'change:update'
 

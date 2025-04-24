@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {reactive, ref} from "vue";
-import {type ColumnItem, type TableConfig} from "@/types/schema";
-import {SchemaTable} from "@/index";
+import {type ColumnItem, type TableConfig} from  "@/types/schema.js";
+import SchemaTable from '@/components/table/schema-table.vue';
 import {FormElemType} from "@/enums";
 
 import {ElMessage} from "element-plus";
-import {getPoliticalOutlooks} from "../mock";
+import {getPoliticalOutlooks} from "../../mock";
 
 const columns = reactive<ColumnItem[]>([
   {

@@ -5,8 +5,8 @@ import type {FormConfig, FormItemConfig} from "@/types/schema.js";
 import {ElMessage} from "element-plus";
 import {DisplayMode, FormElemType} from "@/enums";
 import SchemaForm from '@/components/form/schema-form.vue';
-import {getAddressList, getPoliticalOutlooks} from "../mock";
-import StudentInput from "../components/StudentInput.vue";
+import {getAddressList, getPoliticalOutlooks} from "../../mock";
+import StudentInput from "../../components/StudentInput.vue";
 
 const formConfig = reactive<FormConfig>({
   layout: {
