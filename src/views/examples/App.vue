@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-container>
-      <AsideMenu @select="handleSelect"/>
+      <Sidebar @select="handleSelect"/>
       <el-main class="main-container">
         <component :is="component"></component>
       </el-main>
@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import {shallowRef} from 'vue'
 import './style/base.css'
-import AsideMenu from './components/AsideMenu/index.vue'
+import Sidebar from './components/Sidebar/index.vue'
 
 const component = shallowRef(null)
 const handleSelect = (data: Record<string, any>) => {

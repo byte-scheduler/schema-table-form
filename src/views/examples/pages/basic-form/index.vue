@@ -26,7 +26,7 @@ const formState = reactive<Record<string, any>>({
   mathScore: 140, // 数学成绩
   englishScore: 20, // 英语成绩
   rate: 4, // 自我评分
-  color: '#89d961', // 喜欢的颜色
+  color: '#409eff', // 喜欢的颜色
 })
 
 const formItems = computed<FormItemConfig[]>(() => {

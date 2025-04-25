@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, reactive} from 'vue'
-import BasicForm from '../../pages/basicForm/index.vue'
-import BasicTable from '../../pages/basicTable/index.vue'
+import BasicForm from '../../pages/basic-form/index.vue'
+import BasicTable from '../../pages/basic-table/index.vue'
 
 const menuList = reactive([
   {
@@ -56,7 +56,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-aside width="240px" class="aside-menu-container">
+  <el-aside width="240px" class="sidebar-container">
     <el-menu
         active-text-color="#ffd04b"
         background-color="#545c64"
@@ -77,11 +77,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.aside-menu-container {
+.sidebar-container {
   height: 100vh;
 }
 
-.aside-menu-container .el-menu {
+.sidebar-container .el-menu {
   height: 100%;
 }
 </style>
